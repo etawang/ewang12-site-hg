@@ -1,0 +1,39 @@
+run "hugo" in root to build site
+"hugo server" serves the site. Make sure to always run "hugo" again before attempting to deploy.
+
+To deploy:
+push from public/ directory
+(this directory is a submodule linked to from the ewang12.github.io repo)
+
+http://gohugo.io/overview/usage/
+http://gohugo.io/tutorials/github-pages-blog/
+
+archetypes define content types
+hugo new project/some-project.md
+generates a new project file under content/
+
+Layout rendering is triggered by the presence of content, for the most part.
+
+Layouts Directory
+-----------------
+section/ 
+This directory contains custom views for hugo's default rendering of a list of all contents in a certain content type. So for example, I have a content type "project". Under the content/project/ directory, I have files describing individual projects. Hugo will render each of these at <baseurl>/project/<project-content-filename>/. At <baseurl>/project/, we see the site described by the template project.html in this directory.
+
+<section>/
+project is a section of my content, which contains content of type project. This directory holds templates relating to content of this type, such as the single.html page for single project pages, or list.html for each item in a list when I list all projects.
+
+partials/
+Contains partial templates that I render from inside other templates by calling {{ partial "template.html" .}}
+
+_default/
+Templates in this category are used when no other template is specified. See hugo docs for priority of rendering each template.
+
+Content files
+-----------------
+You can define a bunch of metadata variables in the +++ ... +++ section of a content.md file. There are some which hugo knows about by default, but if you add an extras, they can be accessed under .Params.<variable>, where <variable> is normalized to be all lowercase.
+
+After the +++ ... +++ section, you can write your content, which will be accessible under the .Content template variable.
+
+Templating Variables
+-----------------
+I don't know much about this yet, but it seems that there are "node" variables, page variables, and site variables. See the hugo docs for more info.

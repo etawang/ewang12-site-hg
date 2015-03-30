@@ -3,5 +3,5 @@ layoutdir = "layouts"
 publishdir = "public"
 baseurl = "http://ewang12.github.io/"
 languageCode = "en-us"
-title = "Portfolio Site"
+title = "Esther Wang"
 canonifyurls = true
